@@ -1,6 +1,9 @@
 FROM node
+
 RUN mkdir /src
-WORKDIR /src
-ADD ./app/package.json ./package.json
-COPY ./app/* ./
+
+WORKDIR /src/app
+
+COPY . /src
+
 RUN npm install
