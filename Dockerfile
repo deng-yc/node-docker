@@ -2,5 +2,5 @@ FROM node
 
 RUN mkdir /src
 WORKDIR /src
-ADD . /src
+ADD ./app /src
 RUN npm install
