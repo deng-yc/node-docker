@@ -1,16 +1,12 @@
 FROM node:6
 
-ENV HOME=/node_home
+RUN mkdir /node_home
 
-ENV NPM_CONFIG_LOGLEVEL warn
+WORKDIR /node_home
 
-COPY ./app/package.json $HOME/
-
-WORKDIR $HOME
+ADD app/package.json /node_home/package.json
 
 RUN npm install
-
-COPY ./app $HOME/
 
 EXPOSE 8000
 
