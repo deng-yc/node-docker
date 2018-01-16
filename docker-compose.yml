@@ -3,7 +3,6 @@ version: '3'
 services:
   webapp:
     build: .
-    command: npm start
     ports:
       - 8000:3000
     volumes:
