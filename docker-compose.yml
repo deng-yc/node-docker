@@ -2,6 +2,7 @@ version: '3'
 
 services:
   webapp:
+    build: .
     ports:
       - 8000:3000
     volumes:
