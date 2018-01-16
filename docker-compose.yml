@@ -3,7 +3,10 @@ version: '3'
 services:
   webapp:
     build: .
+    command: npm start
     ports:
-      - 8000:8000
+      - 8000:3000
     volumes:
       - ./app:/src
+    environment:
+      PORT: 3000
