@@ -4,7 +4,7 @@ ENV HOME=/node_home
 
 ENV NPM_CONFIG_LOGLEVEL warn
 
-COPY package.json $HOME/
+COPY ./app/package.json $HOME/
 
 WORKDIR $HOME
 
