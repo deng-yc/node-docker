@@ -2,8 +2,8 @@ FROM node
 
 RUN mkdir /src
 
-WORKDIR /src/app
-
 COPY . /src
+
+WORKDIR /src/app
 
 RUN npm install
