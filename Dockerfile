@@ -1,10 +1,10 @@
 FROM node:6
 
-RUN mkdir /node_home
+RUN mkdir /src
 
-WORKDIR /node_home
+WORKDIR /src
 
-ADD app/package.json /node_home/package.json
+ADD app/package.json /src/package.json
 
 RUN npm install
 
