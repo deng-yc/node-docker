@@ -3,10 +3,10 @@ version: '3'
 services:
   webapp:
     build: .
-    working_dir: /src
+    working_dir: /usr/src/app
     ports:
       - 8000:3000
     volumes:
-      - .:/src
+      - .:/usr/src/app
     environment:
       PORT: 3000
