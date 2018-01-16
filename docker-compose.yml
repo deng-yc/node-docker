@@ -3,6 +3,7 @@ version: '3'
 services:
   webapp:
     build: .
+    working_dir: /src
     ports:
       - 8000:3000
     volumes:
