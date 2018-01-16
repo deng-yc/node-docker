@@ -2,11 +2,7 @@ version: '3'
 
 services:
   webapp:
-    build: .
-    working_dir: /usr/src/app
     ports:
       - 8000:3000
-    volumes:
-      - .:/usr/src/app
     environment:
       PORT: 3000
