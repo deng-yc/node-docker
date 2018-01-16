@@ -1,0 +1,11 @@
+version: '3'
+services:
+  webapp:
+    build:
+      context: ./project
+      dockerfile: Dockerfile.development
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/node_home
+      - /node_home/node_modules
