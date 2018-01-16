@@ -7,3 +7,5 @@ services:
       - 8000:3000
     environment:
       PORT: 3000
+    volumes:
+      - /var/app_home/node_modules
