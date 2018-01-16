@@ -10,7 +10,7 @@ WORKDIR $HOME
 
 RUN npm install
 
-COPY . $HOME/
+COPY ./app $HOME/
 
 EXPOSE 8000
 
