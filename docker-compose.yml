@@ -11,6 +11,8 @@ services:
       PORT: 3000
     volumes:
       - /var/app_home/node_modules
+    links:
+      - "webapi:webapi"
   webapi:
     build:
       context: .
