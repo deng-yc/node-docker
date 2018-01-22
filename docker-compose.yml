@@ -2,10 +2,22 @@ version: '3'
 
 services:
   webapp:
-    build: .
+    build:
+      context: .
+      dockerfile: app/Dockerfile
     ports:
       - 8000:3000
     environment:
       PORT: 3000
     volumes:
       - /var/app_home/node_modules
+  webapi:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - 3000
+    environment:
+      PORT: 3000
+    
+
