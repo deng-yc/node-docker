@@ -33,7 +33,7 @@ podTemplate(label:'hicoin-web',
         ),
         containerTemplate(
             name: 'hiconin-web-app',
-            image:'192.168.31.240:5000/hicoin-web-app:v1.'+BUILD_NUMBER',
+            image:'192.168.31.240:5000/hicoin-web-app:v1.'+BUILD_NUMBER,
             ttyEnabled: true,
             envVars: [
                 envVar(key: 'PORT', value: '3000'),
