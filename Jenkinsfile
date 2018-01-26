@@ -21,3 +21,37 @@ podTemplate(label: 'jnlp-slave',
     }
 }
 
+// podTemplate(label:'hicoin-web',
+//     containers:[
+//         containerTemplate(
+//             name: 'hiconin-web-api',
+//             image:'192.168.31.240:5000/hicoin-web-api:v1.'+BUILD_NUMBER,
+//             ttyEnabled: true,
+//             envVars: [
+//                 envVar(key: 'PORT', value: '3000'),
+//             ],
+//             ports: [portMapping(containerPort: 3000)]
+//         ),
+//         containerTemplate(
+//             name: 'hiconin-web-app',
+//             image:'192.168.31.240:5000/hicoin-web-app:v1.'+BUILD_NUMBER,
+//             ttyEnabled: true,
+//             envVars: [
+//                 envVar(key: 'PORT', value: '3000'),
+//             ],
+//             ports: [portMapping(containerPort: 3000)]
+//         ),
+//     ]
+// ){
+//     node("hicoin-web"){
+//         stage('Run') {
+//             container('hiconin-web-api') {
+//                 sh 'echo running hiconin-web-api'
+//             }
+//             container('hiconin-web-app') {
+//                 sh 'echo running hiconin-web-app'
+//             }
+//         }
+
+//     }
+// }
