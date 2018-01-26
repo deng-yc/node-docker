@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/test",function(req,res){
-  fetch("http://hicoin-web-app:3000/test").then(req=>{
+  fetch("http://hicoin-web-api:3000/test").then(req=>{
     return req.json()
   }).then(json=>{    
       res.json(json);
