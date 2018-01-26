@@ -1,0 +1,84 @@
+# -------------------hicoin-web-api Deployment ------------------- #
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  labels:
+    k8s-app: hicoin-web-api
+  name: hicoin-web-api
+  namespace: default
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: hicoin-web-api
+  template:
+    metadata:
+      labels:
+        k8s-app: hicoin-web-api
+    spec:
+      containers:
+      - name: hicoin-web-api
+        image: 192.168.31.240:5000/hicoin-web-api
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+---
+# ------------------- hicoin-web-api Service ------------------- #
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    k8s-app: hicoin-web-api
+  name: hicoin-web-api
+  namespace: default
+spec:  
+  ports:
+    - port: 5000
+      targetPort: 5000
+  selector:
+    k8s-app: hicoin-web-api
+
+---
+# -------------------hicoin-web-app Deployment ------------------- #
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  labels:
+    k8s-app: hicoin-web-app
+  name: hicoin-web-app
+  namespace: default
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: hicoin-web-app
+  template:
+    metadata:
+      labels:
+        k8s-app: hicoin-web-app
+    spec:
+      containers:
+      - name: hicoin-web-app
+        image: 192.168.31.240:5000/hicoin-web-app
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+---
+# ------------------- hicoin-web-app Service ------------------- #
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    k8s-app: hicoin-web-app
+  name: hicoin-web-app
+  namespace: default
+spec:  
+  type: NodePort
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 9090
+  selector:
+    k8s-app: hicoin-web-app
