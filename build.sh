@@ -4,7 +4,8 @@ registry="hicoin-registry:5000"
 
 declare -A dic
 dic=([app]="./app" [api]="./api")
-
+#登录docker仓库,如果需要
+#docker login --username admin --password admin localhub.online
 for key in $(echo ${!dic[*]})
 do
     echo "$key : ${dic[$key]}"
