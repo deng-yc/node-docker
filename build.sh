@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-registry="192.168.31.245:5000"
+registry="hicoin-registry:5000"
 
 declare -A dic
 dic=([app]="./app" [api]="./api")
