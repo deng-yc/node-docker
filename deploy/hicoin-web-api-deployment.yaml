@@ -1,0 +1,27 @@
+# -------------------hicoin-web-api Deployment ------------------- #
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  labels:
+    k8s-app: hicoin-web-api
+  name: hicoin-web-api
+  namespace: default
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: hicoin-web-api
+  template:
+    metadata:
+      labels:
+        k8s-app: hicoin-web-api
+    spec:
+      containers:
+      - name: hicoin-web-api
+        image: 192.168.31.240:5000/hicoin-web-api
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+
+
