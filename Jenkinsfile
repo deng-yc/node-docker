@@ -1,4 +1,5 @@
-podTemplate(name:"jnlp-slave",
+podTemplate(label: 'jnlp-slave', 
+    name:"jnlp-slave",
     containers: [
         containerTemplate(
             name: 'jnlp',
