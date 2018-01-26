@@ -16,7 +16,7 @@ podTemplate(label: 'jnlp-slave',
         }        
         stage('编译程序') {
             container("jnlp"){
-                sh """
+                sh "
                 registry="192.168.31.240:5000"
                 declare -A dic
                 dic=([app]="./app" [api]="./api")
@@ -35,7 +35,7 @@ podTemplate(label: 'jnlp-slave',
                     docker rmi hicoin-web-$key
                     docker rmi $registry/hicoin-web-$key:v1.${BUILD_NUMBER}
                 done
-                """
+                "
             }
         }
     }
