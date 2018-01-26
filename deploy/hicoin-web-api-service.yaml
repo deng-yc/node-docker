@@ -7,10 +7,8 @@ metadata:
   name: hicoin-web-api
   namespace: default
 spec:    
-  type: NodePort
   ports:
     - port: 3000
       targetPort: 3000
-      nodePort: 9091
   selector:
     k8s-app: hicoin-web-api
