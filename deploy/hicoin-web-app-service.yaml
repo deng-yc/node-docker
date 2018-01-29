@@ -11,6 +11,6 @@ spec:
   ports:
     - port: 3000
       targetPort: 3000
-      nodePort: 9090
+      nodePort: 10000
   selector:
     k8s-app: hicoin-web-app
