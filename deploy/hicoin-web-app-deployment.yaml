@@ -11,15 +11,23 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      k8s-app: hicoin-web-app
+      k8s-app: test-app
   template:
     metadata:
       labels:
-        k8s-app: hicoin-web-app
+        k8s-app: test-app
     spec:
       containers:
-      - name: hicoin-web-app
-        image: 192.168.31.240:5000/hicoin-web-app:v1.${BUILD_NUMBER}
+      - name: test-app
+        image: 192.168.31.240:5000/test-app:v1.${BUILD_NUMBER}
         ports:
         - containerPort: 3000
           protocol: TCP
+        volumeMounts:
+          - name: data
+            mountPath: /data
+      volumes:
+        - name: data
+          nfs:
+            server: 192.168.31.240
+            path: "/data/test-app"

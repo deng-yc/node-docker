@@ -1,22 +1,14 @@
 var express = require('express');
 var fetch = require('node-fetch');
-
+var os = require('os')
+var path = require('path');
+var fs = require("fs");
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
- 
-    res.render('index', { title: 'Express:' });
-
+    fs.writeFileSync("/data/1.txt",os.hostname());
+    res.render('index', { title: os.hostname() });
 });
-
-router.get("/test",function(req,res){
-  fetch("http://hicoin-web-api:3000/test").then(req=>{
-    return req.json()
-  }).then(json=>{    
-      res.json(json);
-  })
-})
 
 module.exports = router;
