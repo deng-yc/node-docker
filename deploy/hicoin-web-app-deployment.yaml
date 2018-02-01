@@ -3,8 +3,8 @@ kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
   labels:
-    k8s-app: hicoin-web-app
-  name: hicoin-web-app
+    k8s-app: test-app
+  name: test-app
   namespace: default
 spec:
   replicas: 1
@@ -28,6 +28,5 @@ spec:
             mountPath: /data
       volumes:
         - name: data
-          nfs:
-            server: 192.168.31.240
-            path: "/data/test-app"
+          persistentVolumeClaim:
+            claimName: nfs
