@@ -28,5 +28,4 @@ spec:
             mountPath: /data
       volumes:
         - name: data
-          persistentVolumeClaim:
-            claimName: nfs
+          emptyDir: {}
