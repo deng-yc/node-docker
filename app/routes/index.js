@@ -9,9 +9,11 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     var lastTitle="";
     var os_name=os.hostname();
-    if(fs.exists("/data/1.txt")){
+    if(fs.existsSync("/data/1.txt")){
       lastTitle=fs.readFileSync("/data/1.txt",'utf-8');
-    }
+      console.log("cc",lastTitle)
+    }     
+    console.log("cc2",lastTitle)
     fs.writeFileSync("/data/1.txt",os_name);
     res.render('index', { title: os_name,last_title:lastTitle });
 });
