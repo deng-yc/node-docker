@@ -18,7 +18,7 @@ spec:
         k8s-app: test-hicoin-io
     spec:
       containers:
-      - name: test.hicoin.io
+      - name: test-hicoin-io
         image: ${REGISTRY_API}/test-app:v1.${BUILD_NUMBER}
         ports:
         - containerPort: 3000
