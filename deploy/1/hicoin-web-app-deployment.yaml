@@ -27,5 +27,12 @@ spec:
           - name: data
             mountPath: /data
       volumes:
-        - name: data
-          emptyDir: {}
+      - name: data
+        ${DISABLE_NFS}  nfs:         
+        ${DISABLE_NFS}    server: 192.168.31.240
+        ${DISABLE_NFS}    path: /exports
+        ${DISABLE_EBS}  ebs:         
+        ${DISABLE_EBS}    server: 192.168.31.240
+        ${DISABLE_EBS}    path: /exports
+
+
