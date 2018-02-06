@@ -1,6 +1,5 @@
 #!/bin/bash 
 
-registry="192.168.31.240:5000"
 prefix="test"
 declare -A dic
 dic=([app]="./app")
