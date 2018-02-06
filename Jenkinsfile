@@ -3,11 +3,7 @@ podTemplate(name:"jnlp-slave",
     containers: [
         containerTemplate(
             name: 'jnlp',
-            image: 'dengyc/jnlp-slave',
-            envVar:[
-                envVar(key:"serverUrl",value:"https://192.168.31.240:6443"),
-                envVar(key:"registry",value:"192.168.31.240:5000")
-            ]
+            image: 'dengyc/jnlp-slave'
         )        
     ]
     ,volumes: [
@@ -16,6 +12,8 @@ podTemplate(name:"jnlp-slave",
     ]
 ){
     node {   
+        sh 'export serverUrl=https://192.168.31.240:6443';
+        sh 'export registry=192.168.31.240:5000'
         
         stage('获取代码') {
             git url: 'https://github.com/deng-yc/node-docker.git' , branch: 'master'
