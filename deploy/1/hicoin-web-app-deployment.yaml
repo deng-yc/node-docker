@@ -28,11 +28,6 @@ spec:
             mountPath: /data
       volumes:
       - name: data
-    ${N}nfs:         
-    ${N}  server: 192.168.31.240
-    ${N}  path: /exports
-    ${E}ebs:         
-    ${E}  server: 192.168.31.240
-    ${E}  path: /exports
-
-
+        nfs:         
+          server: 192.168.31.240
+          path: /exports
