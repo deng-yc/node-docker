@@ -24,10 +24,15 @@ spec:
         - containerPort: 3000
           protocol: TCP
         volumeMounts:
-          - name: data
+          - name: data-${ENV}
             mountPath: /data
       volumes:
-      - name: data
+      - name: data-nfs
         nfs:         
           server: 192.168.31.240
           path: /exports
+      - name: data-aws
+        awsElasticBlockStore:
+          volumeID: vol-0b6d8df71329a4ba7
+          fsType: ext4
+        

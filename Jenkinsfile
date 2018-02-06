@@ -16,7 +16,7 @@ podTemplate(
     node('jnlp-slave') {   
         withEnv([
             'REGISTRY_API=192.168.31.240:5000',
-            'E=#'
+            'ENV=nfs'
         ]){            
             
             stage('获取代码') {
