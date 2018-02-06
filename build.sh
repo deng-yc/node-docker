@@ -18,3 +18,5 @@ do
     docker rmi $prefix-$key
     docker rmi $REGISTRY_API/$prefix-$key:v1.${BUILD_NUMBER}
 done
+
+

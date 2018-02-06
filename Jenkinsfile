@@ -16,7 +16,7 @@ podTemplate(
     node('jnlp-slave') {   
         withEnv([
             'REGISTRY_API=192.168.31.240:5000',
-            'ENV=nfs'
+            'DEPLOY_ENV=LOCAL'
         ]){            
             
             stage('获取代码') {
@@ -24,6 +24,10 @@ podTemplate(
             }        
             stage('编译程序') {     
                 sh 'chmod +x ./build.sh && ./build.sh'
+            }
+            stage('处理环境'){
+                sh 'echo 当前环境为:$DEPLOY_ENV';
+                sh 'sed -i "s/##${DEPLOY_ENV}##//g" `grep "jack" -rl ./deploy`'
             }
             stage("发布到k8s"){
                 kubernetesDeploy(
