@@ -3,8 +3,8 @@ kind: Service
 apiVersion: v1
 metadata:
   labels:
-    k8s-app: test.hicoin.io
-  name: test.hicoin.io
+    k8s-app: test-hicoin-io
+  name: test-hicoin-io
   namespace: default
 spec:  
   type: NodePort
@@ -13,4 +13,4 @@ spec:
       targetPort: 3000
       nodePort: 10000
   selector:
-    k8s-app: test.hicoin.io
+    k8s-app: test-hicoin-io

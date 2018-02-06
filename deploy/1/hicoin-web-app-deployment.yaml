@@ -3,19 +3,19 @@ kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
   labels:
-    k8s-app: test.hicoin.io
-  name: test.hicoin.io
+    k8s-app: test-hicoin-io
+  name: test-hicoin-io
   namespace: default
 spec:
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      k8s-app: test.hicoin.io
+      k8s-app: test-hicoin-io
   template:
     metadata:
       labels:
-        k8s-app: test.hicoin.io
+        k8s-app: test-hicoin-io
     spec:
       containers:
       - name: test.hicoin.io
