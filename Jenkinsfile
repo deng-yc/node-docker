@@ -1,3 +1,12 @@
+// This step should not normally be used in your script. Consult the inline help for details.
+podTemplate(containers: [
+    
+    containerTemplate(alwaysPullImage: false,
+         args: 'cat',
+          command: '/bin/sh -c',
+           envVars: [envVar(key: 'aa', value: 'bbbbbbbbbbbbbbbbb')], image: 's', livenessProbe: containerLivenessProbe(execArgs: '', failureThreshold: 0, initialDelaySeconds: 0, periodSeconds: 0, successThreshold: 0, timeoutSeconds: 0), name: 's', ports: [], privileged: false, resourceLimitCpu: '', resourceLimitMemory: '', resourceRequestCpu: '', resourceRequestMemory: '', ttyEnabled: true, workingDir: '/home/jenkins')], inheritFrom: '', instanceCap: 0, label: '', name: '', namespace: '', nodeSelector: '', serviceAccount: '', workspaceVolume: emptyDirWorkspaceVolume(false)) {
+    // some block
+}
 
 podTemplate(label: 'jnlp-slave', 
     name:"jnlp-slave",
@@ -5,7 +14,11 @@ podTemplate(label: 'jnlp-slave',
     containers: [
         containerTemplate(
             name: 'jnlp',
-            image: 'dengyc/jnlp-slave'
+            image: 'dengyc/jnlp-slave',
+            envVar:[
+                envVar(key:"serverUrl",value:"https://192.168.31.240:6443"),
+                envVar(key:"registry",value:"192.168.31.240:5000")
+            ]
         )        
     ]
     ,volumes: [
@@ -18,10 +31,6 @@ podTemplate(label: 'jnlp-slave',
     
     node ('jnlp-slave') {   
         
-        environment { 
-            serverUrl = 'https://192.168.31.240:6443'
-            registry="192.168.31.240:5000"
-        }     
         stage('获取代码') {
             git url: 'https://github.com/deng-yc/node-docker.git' , branch: 'master'
         }        
