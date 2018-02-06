@@ -1,15 +1,4 @@
-// This step should not normally be used in your script. Consult the inline help for details.
-podTemplate(containers: [
-    
-    containerTemplate(alwaysPullImage: false,
-         args: 'cat',
-          command: '/bin/sh -c',
-           envVars: [envVar(key: 'aa', value: 'bbbbbbbbbbbbbbbbb')], image: 's', livenessProbe: containerLivenessProbe(execArgs: '', failureThreshold: 0, initialDelaySeconds: 0, periodSeconds: 0, successThreshold: 0, timeoutSeconds: 0), name: 's', ports: [], privileged: false, resourceLimitCpu: '', resourceLimitMemory: '', resourceRequestCpu: '', resourceRequestMemory: '', ttyEnabled: true, workingDir: '/home/jenkins')], inheritFrom: '', instanceCap: 0, label: '', name: '', namespace: '', nodeSelector: '', serviceAccount: '', workspaceVolume: emptyDirWorkspaceVolume(false)) {
-    // some block
-}
-
-podTemplate(label: 'jnlp-slave', 
-    name:"jnlp-slave",
+podTemplate(name:"jnlp-slave",
     //nodeSelector: 'app=build',
     containers: [
         containerTemplate(
@@ -26,10 +15,7 @@ podTemplate(label: 'jnlp-slave',
         hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
     ]
 ){
-
-
-    
-    node ('jnlp-slave') {   
+    node {   
         
         stage('获取代码') {
             git url: 'https://github.com/deng-yc/node-docker.git' , branch: 'master'
