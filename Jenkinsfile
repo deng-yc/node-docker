@@ -27,7 +27,7 @@ podTemplate(
             }
             stage('处理环境'){
                 sh 'echo 当前环境为:$DEPLOY_ENV';
-                sh 'sed -i "s/##${DEPLOY_ENV}##//g" `grep "jack" -rl ./deploy`'
+                sh 'sed -i "s/##${DEPLOY_ENV}##//g" `grep "##${DEPLOY_ENV}##" -rl ./deploy`'
             }
             stage("发布到k8s"){
                 kubernetesDeploy(
