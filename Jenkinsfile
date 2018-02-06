@@ -15,11 +15,13 @@ podTemplate(label: 'jnlp-slave',
 ){
 
 
-    environment { 
-        serverUrl = 'https://192.168.31.240:6443'
-        registry="192.168.31.240:5000"
-    }
-    node ('jnlp-slave') {        
+    
+    node ('jnlp-slave') {   
+        
+        environment { 
+            serverUrl = 'https://192.168.31.240:6443'
+            registry="192.168.31.240:5000"
+        }     
         stage('获取代码') {
             git url: 'https://github.com/deng-yc/node-docker.git' , branch: 'master'
         }        
