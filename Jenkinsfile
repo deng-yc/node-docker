@@ -1,5 +1,5 @@
 podTemplate(
-    label:'jnlp-slave'
+    label:'jnlp-slave',
     name:"jnlp-slave",
     //nodeSelector: 'app=build',
     containers: [
