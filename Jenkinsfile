@@ -1,4 +1,6 @@
-podTemplate(name:"jnlp-slave",
+podTemplate(
+    label:'jnlp-slave'
+    name:"jnlp-slave",
     //nodeSelector: 'app=build',
     containers: [
         containerTemplate(
@@ -11,15 +13,16 @@ podTemplate(name:"jnlp-slave",
         hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
     ]
 ){
-    node {   
+    node('jnlp-slave') {   
         sh 'export serverUrl=https://192.168.31.240:6443';
         sh 'export registry=192.168.31.240:5000'
         
+        sh 'echo 服务器url:$serverUrl'
         stage('获取代码') {
             git url: 'https://github.com/deng-yc/node-docker.git' , branch: 'master'
         }        
         stage('编译程序') {     
-            sh("chmod +x ./build.sh && ./build.sh")
+            sh 'chmod +x ./build.sh && ./build.sh'
         }
         stage("发布到k8s"){
             kubernetesDeploy(
