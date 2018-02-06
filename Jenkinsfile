@@ -14,10 +14,15 @@ podTemplate(
     ]
 ){
     node('jnlp-slave') {   
-        sh 'export serverUrl=https://192.168.31.240:6443';
-        sh 'export registry=192.168.31.240:5000'
+
+        environment {
+
+            serverUrl='https://192.168.31.240:6443'
+            registry='192.168.31.240:5000'
+        }
         
-        sh 'echo 服务器url:$serverUrl'
+        sh 'echo 服务器url:$serverUrl  docker 仓库:$registry'
+
         stage('获取代码') {
             git url: 'https://github.com/deng-yc/node-docker.git' , branch: 'master'
         }        
