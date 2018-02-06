@@ -11,10 +11,10 @@ do
     echo --------------开始编译 $key----------------
     docker build -t $prefix-$key ${dic[$key]}
     echo --------------添加TAG----------------
-    docker tag $prefix-$key $registry/$prefix-$key:v1.${BUILD_NUMBER}
+    docker tag $prefix-$key $REGISTRY_API/$prefix-$key:v1.${BUILD_NUMBER}
     echo --------------推送到仓库----------------
-    docker push $registry/$prefix-$key:v1.${BUILD_NUMBER}
+    docker push $REGISTRY_API/$prefix-$key:v1.${BUILD_NUMBER}
     echo --------------删除本地镜像----------------
     docker rmi $prefix-$key
-    docker rmi $registry/$prefix-$key:v1.${BUILD_NUMBER}
+    docker rmi $REGISTRY_API/$prefix-$key:v1.${BUILD_NUMBER}
 done
