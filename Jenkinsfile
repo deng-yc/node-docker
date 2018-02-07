@@ -39,7 +39,7 @@ podTemplate(label: 'jnlp-slave',
                 docker.withRegistry("https://${REGISTRY_API}", "ecr:ap-northeast-1:hicoin-deploy") {
                     echo '------------hicoin-content------------'                     
                     def login = ecrLogin()
-                    
+                    echo 'sssssssss ${login}'
                     docker.build("hicoin:test-app.${BUILD_NUMBER}",'./app').push()
                     //sh("chmod +x ./build.sh && ./build.sh");
                 }
