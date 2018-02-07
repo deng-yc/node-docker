@@ -36,9 +36,9 @@ podTemplate(label: 'jnlp-slave',
                 ])
             }        
             stage('编译程序') {
-                docker.withRegistry("https://${REGISTRY_API}", "ecr:ap-northeast-1:hicoin-deploy") {
+                docker.withRegistry("https://${REGISTRY_API}", "ecr:ap-northeast-1:hicoin-ecr") {
                     echo '------------hicoin-content------------' 
-                    withAWS(credentials: 'ecr:ap-northeast-1:hicoin-deploy') {                        
+                    withAWS(credentials: 'hicoin-registry') {                        
                         def login = ecrLogin()
                         sh(login);
                     }
