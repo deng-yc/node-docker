@@ -40,9 +40,8 @@ podTemplate(label: 'jnlp-slave',
                     echo '------------hicoin-content------------' 
                     withAWS(credentials: 'hicoin-registry') {                        
                         def login = ecrLogin()
-                        sh(login);
-                    }
-                    docker.build("hicoin:test-app.${BUILD_NUMBER}",'-f ./app/Dockerfile .').push()
+                        sh(login);                     }
+                    docker.build("hicoin:test-app.build${BUILD_NUMBER}",'-f ./app/Dockerfile .').push()
                     //sh("chmod +x ./build.sh && ./build.sh");
                 }
             }
