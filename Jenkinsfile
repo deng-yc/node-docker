@@ -42,7 +42,7 @@ podTemplate(label: 'jnlp-slave',
                         def login = ecrLogin()
                         sh(login);
                     }
-                    docker.build("hicoin:test-app.${BUILD_NUMBER}",'./app').push()
+                    docker.build("hicoin:test-app.${BUILD_NUMBER}",'-f ./app/Dockerfile .').push()
                     //sh("chmod +x ./build.sh && ./build.sh");
                 }
             }
