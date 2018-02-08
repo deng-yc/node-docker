@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: test-hicoin-io
-        image: ${REGISTRY_API}/test-app:v1.${BUILD_NUMBER}
+        image: ${REGISTRY_API}/hicoin:test-app.build-${BUILD_NUMBER}
         ports:
         - containerPort: 3000
           protocol: TCP
@@ -27,12 +27,12 @@ spec:
           - name: data
             mountPath: /data
       volumes:
-      ##LOCAL##- name: data
-        ##LOCAL##nfs:         
-        ##LOCAL##  server: 192.168.31.240
-        ##LOCAL##  path: /exports
-      ##AWS##- name: data
-      ##AWS##  awsElasticBlockStore:
-      ##AWS##    volumeID: vol-0b6d8df71329a4ba7
-      ##AWS##    fsType: ext4
+      # ##LOCAL##- name: data
+      #  ##LOCAL##nfs:         
+      #  ##LOCAL##  server: 192.168.31.240
+      #  ##LOCAL##  path: /exports
+      # ##AWS##- name: data
+      # ##AWS##  awsElasticBlockStore:
+      # ##AWS##    volumeID: vol-0b6d8df71329a4ba7
+      # ##AWS##    fsType: ext4
         
