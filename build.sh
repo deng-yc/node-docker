@@ -1,8 +1,8 @@
 #!/bin/bash 
 
 prefix="hicoin"
-declare -A dic
-dic=([test-app]="./app")
+declare -A apps
+apps=([test-app]="./app")
 #登录docker仓库,如果需要
 #docker login --username admin --password admin localhub.online
 
